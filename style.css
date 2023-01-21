@@ -1,0 +1,172 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:regular,700,900&display=swap);
+
+:root {
+  --primary: rgb(106, 90, 205);
+  --primary-dark: rgb(20, 20, 20);
+  --primary-white: rgb(240, 240, 240);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font-family: 'Montserrat';
+  background-color: var(--primary-dark);
+  color: var(--primary-white);
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-white);
+}
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/*-------------------------------------------------INDEX.HTML--------------------------------------------------------------*/
+
+.header {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+}
+
+.header__icon {
+  width: 50px;
+  height: 50px;
+}
+
+.header__title {
+  font-size: 20px;
+}
+
+.header__content {
+  justify-self: flex-end;
+  display: flex;
+  column-gap: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__item {
+  color: var(--primary-white);
+  font-size: 16px;
+}
+
+.header__item:hover {
+  transition: all 0.3s ease 0s;
+  color: var(--primary);
+}
+
+.page {
+  flex: 1 1 auto;
+}
+
+.intro__container {
+  display: flex;
+  margin: 100px;
+  column-gap: 40px;
+}
+
+.intro__text {
+  flex: 1 0 50%;
+}
+
+.intro__title {
+  margin: 0 0 30px 0;
+  font-size: 38px;
+}
+
+.intro__description {
+  margin: 0 0 30px 0;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+}
+
+.intro__link {
+  display: inline-block;
+  border: 2px solid var(--primary-white);
+  padding: 15px;
+  border-radius: 25px;
+}
+
+.intro__link:hover {
+  transition: all 0.3s ease 0s;
+  background-color: var(--primary);
+}
+
+.intro__img {
+  flex: 1 0 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro__img img {
+  height: 300px;
+  width: 300px;
+}
+
+.footer {
+}
+
+.footer__container {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__copy {
+  font-size: 14px;
+}
+
+/*-------------------------------------------------INDEX.PHP--------------------------------------------------------------*/
+
+.page__main {
+  display: flex;
+  margin: 60px;
+}
+
+.main__toolbar {
+  flex: 0 0 20%;
+  margin-right: 20px;
+  border-right: 1px solid var(--primary-white);
+}
+
+.main__content {
+  flex: 0 0 80%;
+}
+
+.main__item {
+  margin: 0 0 15px 0;
+}
+
+.main__search {
+  width: 100%;
+  background-color: var(--primary-dark);
+  color: var(--primary-white);
+  border: 2px solid var(--primary-white);
+  padding: 15px;
+  border-radius: 25px;
+}
