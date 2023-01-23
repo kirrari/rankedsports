@@ -74,9 +74,19 @@ for ($i = 1; $i < count($stringResults); $i++) {
       </div>
     </header>
     <main class="page">
+    <div class="page__description">
+        <h1 class="selection__title">Персональный подбор</h1>
+        <div class="selection__container">
+          <p class="selection__text">
+            Здесь вы можете самостоятельно подобрать тренажерный зал в соответствии с вашими пожеланиями.
+          </p>
+          <img src="../assets/index-hero.webp" alt="" class="selection__img">
+        </div>
+      </div>
       <div class="page__main">
         <div class="main__toolbar">
-          <input type="text" class="main__search">
+          <label for="main-search" class="main__search--title">Поиск</label>
+          <input type="text" class="main__search" id="main-search">
         </div>
         <div class="main__content">
          <!-- <div class="main__item">hello</div> -->

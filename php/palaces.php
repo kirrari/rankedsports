@@ -74,6 +74,16 @@ for ($i = 1; $i < count($stringResults); $i++) {
       </div>
     </header>
     <main class="page">
+    <div class="page__description">
+        <h1 class="description__title">Дворцы спорта</h1>
+        <div class="description__container">
+          <div class="description__info">
+            <p class="description__text"><b>Дворец спорта</b> — сооружение закрытого типа для проведения спортивных соревнований, а также организации спортивно-зрелищных мероприятий. Нередко его называют стадионом под крышей.</p>
+            <p class="description__text">Почти все дворцы спорта в нашей стране — универсальные, т. е. там применяются съемные настилы и оборудование и за короткий промежуток времени арена трансформируется в зависимости от требований в площадку для спортивных игр, поле для мини-футбола, каток для фигуристов и хоккеистов, превращается в ядро для легкоатлетических состязаний, в гимнастический помост.</p>
+          </div>
+          <img src="../assets/sports-palace.png" alt="sports palace" class="description__img--palace">
+        </div>
+      </div>
       <div class="page__main">
         <div class="main__toolbar">
           <input type="text" class="main__search">

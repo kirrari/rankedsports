@@ -50,7 +50,7 @@ a {
 }
 
 .page__description {
-  margin: 50px 100px;
+  margin: 50px;
 }
 
 /*-------------------------------------------------INDEX.HTML--------------------------------------------------------------*/
@@ -211,7 +211,27 @@ a {
 
 .page__main {
   display: flex;
-  margin: 60px;
+  margin: 50px;
+}
+
+.selection__title {
+  text-align: center;
+}
+
+.selection__container {
+  margin: 50px 0 100px 0;
+}
+
+.selection__text {
+  font-size: 20px;
+  line-height: 27px;
+  text-align: center;
+  margin: 0 0 30px 0;
+}
+
+.selection__img {
+  width: 100%;
+  height: auto;
 }
 
 .main__toolbar {
@@ -221,7 +241,7 @@ a {
 }
 
 .main__content {
-  flex: 0 0 80%;
+  flex: 0 0 calc(80% - 20px);
 }
 
 .main__item {
@@ -249,6 +269,13 @@ a {
   padding: 15px;
   border-radius: 25px;
   outline-color: var(--primary);
+}
+
+.main__search--title {
+  text-align: center;
+  display: block;
+  margin: 0 0 15px 0;
+  width: 90%;
 }
 
 .main__description {
@@ -287,3 +314,33 @@ a {
 }
 
 /*-------------------------------------------------FITNESS.PHP--------------------------------------------------------------*/
+
+.description__title {
+  text-align: center;
+}
+
+.description__container {
+  display: flex;
+  column-gap: 40px;
+  margin: 50px 0 100px 0;
+  align-items: center;
+}
+
+.description__info {
+}
+
+.description__text {
+  font-size: 16px;
+  line-height: 23px;
+  margin: 0 0 10px 0;
+}
+
+.description__img {
+  width: 625px;
+  height: auto;
+}
+
+.description__img--palace {
+  width: 725px;
+  height: auto;
+}

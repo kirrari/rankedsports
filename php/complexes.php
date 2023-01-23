@@ -74,6 +74,17 @@ for ($i = 1; $i < count($stringResults); $i++) {
       </div>
     </header>
     <main class="page">
+    <div class="page__description">
+        <h1 class="description__title">Спортивные комплексы</h1>
+        <div class="description__container">
+          <div class="description__info">
+            <p class="description__text"><b>Физкультурно-спортивный комплекс</b> – группа спортивных сооружений, размещаемых на одной территории и предназначенных для различных видов спорта.</p>
+            <p class="description__text">Спортивный комплекс может иметь одну или несколько спортивных арен с трибунами для зрителей (стадионов), ряд открытых спортивных площадок (полей) и сооружений, а также крытые сооружения (спортивные корпуса).</p>
+            <p class="description__text">В состав уличных спортивных комплексов могут входить самые различные элементы: брусья, тренажеры, баскетбольные кольца, рукоходы, турники, гимнастические кольца, стенки и многое-многое другое.</p>
+          </div>
+          <img src="../assets/complex.jpeg" alt="complex" class="description__img">
+        </div>
+      </div>
       <div class="page__main">
         <div class="main__toolbar">
           <input type="text" class="main__search">

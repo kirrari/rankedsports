@@ -77,8 +77,12 @@ for ($i = 1; $i < count($stringResults); $i++) {
       <div class="page__description">
         <h1 class="description__title">Фитнес клубы</h1>
         <div class="description__container">
-          <div class="description__text"></div>
-          <img src="" alt="" class="description__img">
+          <div class="description__info">
+            <p class="description__text"><b>Фитнес-клуб</b> — оздоровительное, развлекательное и социальное учреждение, которое предназначено для занятий спортом и физических нагрузок. Оно объединяет в себе разные типы тренировок и оздоровительных процедур.</p>
+            <p class="description__text">В большинстве фитнес-клубов работают персональные тренеры и диетологи, которые будут обучать клиентов пользоваться оборудованием или составлять план питания и тренировок, подходящие для достижения их целей.</p>
+            <p class="description__text">Фитнес-клубы, как правило, занимают большие площади, но также могут быть средними или маленькими. Все зависит от количества предоставляемых услуг, направленностей тренировок и зон для них.</p>
+          </div>
+          <img src="../assets/fitness.jpeg" alt="fitness" class="description__img">
         </div>
       </div>
       <div class="page__main">
