@@ -64,13 +64,13 @@ for ($i = 1; $i < count($stringResults); $i++) {
     <header class="header">
       <div class="header__logo">
         <img src="../assets/logo.svg" alt="logo" class="header__icon">
-        <a href="../index.html" class="header__title">RANKEDSPORTS</a>
+        <a href="../index.html" class="header__title--secondary">RANKEDSPORTS</a>
       </div>
       <div class="header__content">
         <a href="#" class="header__item">ФИТНЕС КЛУБЫ</a>
         <a href="#" class="header__item">ДВОРЦЫ СПОРТА</a>
-        <a href="#" class="header__item">ДОСУГОВЫЕ ЦЕНТРЫ</a>
         <a href="#" class="header__item">СПОРТЗАЛЫ</a>
+        <a href="index.php" class="header__item">ПЕРСОНАЛЬНЫЙ ПОДБОР</a>
       </div>
     </header>
     <main class="page">
@@ -79,7 +79,7 @@ for ($i = 1; $i < count($stringResults); $i++) {
           <input type="text" class="main__search">
         </div>
         <div class="main__content">
-          <!-- <div class="main__item">hello</div> -->
+         <!-- <div class="main__item">hello</div> -->
         </div>
       </div>
     </main>
@@ -100,10 +100,72 @@ for ($i = 1; $i < count($stringResults); $i++) {
       elements.forEach(params => {
         let item = document.createElement('div');
 
+        const gym = {
+          objectName: params[0],
+          admArea: params[1],
+          district: params[2],
+          address: params[3],
+          email: params[4],
+          website: params[5],
+          helpPhone: params[6],
+          hasEquipmentRental: params[7],
+          hasTechService: params[8],
+          hasDressingRoom: params[9],
+          hasEatery: params[10],
+          hasToilet: params[11],
+          hasWifi: params[12],
+          hasCashMachine: params[13],
+          hasFirstAidPost: params[14],
+          hasMusic: params[15],
+          usagePeriodWinter: params[16],
+          lighting: params[17],
+          surfaceTypeWinter: params[18],
+          paid: params[19],
+          disabilityFriendly: params[20],
+          servicesWinter: params[21],
+        }
+
         item.classList.add('main__item');
-        item.innerHTML = params[0];
+        item.innerHTML = 
+        `
+          <p class="main__name">${gym.objectName}</p>
+          <p class="main__description">${gym.address} | <span class="paid">${gym.paid}<span></p>
+          <ul class="main__about hidden">
+            <li class="about__item">Административный округ: ${gym.admArea === "" ? "информация отсутствует :(" : gym.admArea}</li>
+            <li class="about__item">Район: ${gym.district === "" ? "информация отсутствует :(" : gym.district}</li>
+            <li class="about__item">Адрес электронной почты: ${gym.email === "" ? "информация отсутствует :(" : gym.email}</li>
+            <li class="about__item">Адрес сайта: ${gym.website === "" ? "информация отсутствует :(" : gym.website}</li>
+            <li class="about__item">Справочный телефон: ${gym.helpPhone === "" ? "информация отсутствует :(" : gym.helpPhone}</li>
+            <li class="about__item">Наличие раздевалки: ${gym.hasDressingRoom === "" ? "информация отсутствует :(" : gym.hasDressingRoom}</li>
+            <li class="about__item">Наличие точки питания: ${gym.hasEatery === "" ? "информация отсутствует :(" : gym.hasEatery}</li>
+            <li class="about__item">Наличие туалета: ${gym.hasToilet === "" ? "информация отсутствует :(" : gym.hasToilet}</li>
+            <li class="about__item">Наличие точки Wi-Fi: ${gym.hasWifi === "" ? "информация отсутствует :(" : gym.hasWifi}</li>
+            <li class="about__item">Наличие банкомата: ${gym.hasCashMachine === "" ? "информация отсутствует :(" : gym.hasCashMachine}</li>
+            <li class="about__item">Наличие медпункта: ${gym.hasFirstAidPost === "" ? "информация отсутствует :(" : gym.hasFirstAidPost}</li>
+            <li class="about__item">Наличие звукового сопровождения: ${gym.hasMusic === "" ? "информация отсутствует :(" : gym.hasMusic}</li>
+            <li class="about__item">Освещение: ${gym.lighting === "" ? "информация отсутствует :(" : gym.lighting}</li>
+            <li class="about__item">Приспособленность для занятий инвалидов: ${gym.disabilityFriendly === "" ? "информация отсутствует :(" : gym.disabilityFriendly}</li>
+            <li class="about__item">Возможность проката оборудования: ${gym.hasEquipmentRental === "" ? "информация отсутствует :(" : gym.hasEquipmentRental}</li>
+            <li class="about__item">Наличие сервиса технического обслуживания: ${gym.hasTechService === "" ? "информация отсутствует :(" : gym.hasTechService}</li>
+            <li class="about__item">Период эксплуатации в зимний период: ${gym.usagePeriodWinter === "" ? "информация отсутствует :(" : gym.usagePeriodWinter}</li>
+            <li class="about__item">Покрытие в зимний период: ${gym.surfaceTypeWinter === "" ? "информация отсутствует :(" : gym.surfaceTypeWinter}</li>
+            <li class="about__item">Услуги, предоставляемые в зимний период: ${gym.servicesWinter === "" ? "информация отсутствует :(" : gym.servicesWinter}</li>
+          </ul>
+        `;
 
         mainContent.append(item);
+      })
+
+      const mainItems = document.querySelectorAll('.main__item');
+
+      mainItems.forEach(item => {
+        item.addEventListener('click', (event) => {
+          const gym = event.currentTarget;
+          const about = gym.children[2];
+
+          gym.classList.toggle('active--gym');
+          about.classList.toggle('hidden');
+        })
       })
     }
   

@@ -36,6 +36,19 @@ a {
   margin: 0 auto;
 }
 
+.hidden {
+  display: none;
+}
+
+.active--gym {
+  border: 1px solid var(--primary) !important;
+  box-shadow: 0 0 5px 2px var(--primary);
+}
+
+.paid {
+  color: var(--primary);
+}
+
 /*-------------------------------------------------INDEX.HTML--------------------------------------------------------------*/
 
 .header {
@@ -55,8 +68,14 @@ a {
   height: 50px;
 }
 
-.header__title {
+.header__title,
+.header__title--secondary {
   font-size: 20px;
+}
+
+.header__title--secondary:hover {
+  transition: all 0.3s ease 0s;
+  color: var(--primary);
 }
 
 .header__content {
@@ -79,6 +98,10 @@ a {
 
 .page {
   flex: 1 1 auto;
+}
+
+.page__intro {
+  margin: 0 0 120px 0;
 }
 
 .intro__container {
@@ -127,6 +150,45 @@ a {
   width: 300px;
 }
 
+.page__about {
+  margin: 100px;
+}
+
+.about__container {
+  display: flex;
+  column-gap: 40px;
+  align-items: center;
+}
+
+.about__title {
+  text-align: center;
+  margin: 20px 0 50px 0;
+}
+
+.about__img {
+  height: 500px;
+  width: auto;
+}
+
+.about__text {
+}
+
+.about__description {
+  font-size: 18px;
+  margin: 0 0 20px 0;
+  line-height: 27px;
+}
+
+.about__list {
+  margin: 0 0 20px 15px;
+}
+
+.about__element {
+  font-size: 18px;
+  margin: 0 0 5px 0;
+  line-height: 27px;
+}
+
 .footer {
 }
 
@@ -159,14 +221,42 @@ a {
 }
 
 .main__item {
-  margin: 0 0 15px 0;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 0 0 10px 0;
+  cursor: pointer;
+  background-color: rgb(15, 15, 15);
+  border: 1px solid var(--primary-dark);
+}
+
+.main__item:hover {
+  transition: all 0.5s ease 0s;
+  border: 1px solid var(--primary);
 }
 
 .main__search {
-  width: 100%;
+  width: 90%;
   background-color: var(--primary-dark);
   color: var(--primary-white);
   border: 2px solid var(--primary-white);
   padding: 15px;
   border-radius: 25px;
+  outline-color: var(--primary);
+}
+
+.main__description {
+  margin: 5px 0 0 0;
+  color: rgb(130, 130, 130);
+  font-size: 14px;
+}
+
+.main__about {
+  margin: 10px 0 0 0;
+  list-style-type: none;
+}
+
+.about__item {
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0 0 5px 0;
 }
