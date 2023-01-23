@@ -67,13 +67,20 @@ for ($i = 1; $i < count($stringResults); $i++) {
         <a href="../index.html" class="header__title--secondary">RANKEDSPORTS</a>
       </div>
       <div class="header__content">
-      <a href="fitness.php" class="header__item">ФИТНЕС КЛУБЫ</a>
+        <a href="fitness.php" class="header__item">ФИТНЕС КЛУБЫ</a>
         <a href="palaces.php" class="header__item">ДВОРЦЫ СПОРТА</a>
         <a href="complexes.php" class="header__item">КОМПЛЕКСЫ</a>
         <a href="index.php" class="header__item">ПЕРСОНАЛЬНЫЙ ПОДБОР</a>
       </div>
     </header>
     <main class="page">
+      <div class="page__description">
+        <h1 class="description__title">Фитнес клубы</h1>
+        <div class="description__container">
+          <div class="description__text"></div>
+          <img src="" alt="" class="description__img">
+        </div>
+      </div>
       <div class="page__main">
         <div class="main__toolbar">
           <input type="text" class="main__search">
@@ -219,7 +226,9 @@ for ($i = 1; $i < count($stringResults); $i++) {
           </ul>
         `;
 
-        mainContent.append(item);
+        if (gym.objectName.toLowerCase().includes('фитнес')) {
+          mainContent.append(item);
+        }
       })
 
       const mainItems = document.querySelectorAll('.main__item');
