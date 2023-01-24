@@ -28,6 +28,10 @@ a {
   color: var(--primary-white);
 }
 
+select {
+  width: 90%;
+}
+
 .wrapper {
   min-height: 100%;
   display: flex;
@@ -51,6 +55,10 @@ a {
 
 .page__description {
   margin: 50px;
+}
+
+.colored {
+  color: var(--primary) !important;
 }
 
 /*-------------------------------------------------INDEX.HTML--------------------------------------------------------------*/
@@ -155,7 +163,7 @@ a {
 }
 
 .page__about {
-  margin: 100px;
+  margin: 120px 100px;
 }
 
 .about__container {
@@ -235,13 +243,15 @@ a {
 }
 
 .main__toolbar {
-  flex: 0 0 20%;
+  flex: 0 0 21%;
   margin-right: 20px;
   border-right: 1px solid var(--primary-white);
+  display: flex;
+  flex-direction: column;
 }
 
 .main__content {
-  flex: 0 0 calc(80% - 20px);
+  flex: 0 0 calc(79% - 20px);
 }
 
 .main__item {
@@ -269,12 +279,13 @@ a {
   padding: 15px;
   border-radius: 25px;
   outline-color: var(--primary);
+  margin: 0 0 10px 0;
 }
 
 .main__search--title {
   text-align: center;
   display: block;
-  margin: 0 0 15px 0;
+  margin: 0 0 10px 0;
   width: 90%;
 }
 
@@ -311,6 +322,21 @@ a {
   font-size: 14px;
   line-height: 20px;
   margin: 0 0 5px 0;
+}
+
+.main__input {
+  display: flex;
+  justify-content: space-between;
+}
+
+select {
+  margin: 0 0 10px 0;
+}
+
+label,
+.main__input {
+  margin: 0 0 5px 0;
+  width: 90%;
 }
 
 /*-------------------------------------------------FITNESS.PHP--------------------------------------------------------------*/

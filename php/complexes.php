@@ -69,7 +69,7 @@ for ($i = 1; $i < count($stringResults); $i++) {
       <div class="header__content">
         <a href="fitness.php" class="header__item">ФИТНЕС КЛУБЫ</a>
         <a href="palaces.php" class="header__item">ДВОРЦЫ СПОРТА</a>
-        <a href="complexes.php" class="header__item">КОМПЛЕКСЫ</a>
+        <a href="complexes.php" class="header__item colored">КОМПЛЕКСЫ</a>
         <a href="index.php" class="header__item">ПЕРСОНАЛЬНЫЙ ПОДБОР</a>
       </div>
     </header>
@@ -86,8 +86,67 @@ for ($i = 1; $i < count($stringResults); $i++) {
         </div>
       </div>
       <div class="page__main">
-        <div class="main__toolbar">
-          <input type="text" class="main__search">
+      <div class="main__toolbar">
+          <label for="main-search" class="main__search--title">Поиск</label>
+          <input type="text" class="main__search" id="main-search">
+          <label for="main-rating-select">Рейтинг:</label>
+          <select name="main-rating-select" id="main-rating-select">
+            <option value="0">Не выбрано</option>
+            <option value="5">5 звёзд</option>
+            <option value="4">4 звезды</option>
+            <option value="3">3 звезды</option>
+            <option value="2">2 звезды</option>
+            <option value="1">1 звезда</option>
+          </select>
+          <label for="main-paid-select">Платно/бесплатно</label>
+          <select name="main-paid-select" id="main-paid-select">
+            <option value="none">Не выбрано</option>
+            <option value="free">Бесплатно</option>
+            <option value="paid">Платно</option>
+          </select>
+          <label for="main-disability-select">Приспособленность для занятий инвалидов</label>
+          <select name="main-disability-select" id="main-disability-select">
+            <option value="none">Не выбрано</option>
+            <option value="partly">Частично приспособлен</option>
+            <option value="oda">Приспособлен для лиц с нарушением ОДА</option>
+            <option value="fully">Приспособлен для всех групп инвалидов</option>
+          </select>
+          <div class="main__input">
+            <label for="hasDressingRoom">Наличие раздевалки</label>
+            <input type="checkbox" name="hasDressingRoom" id="hasDressingRoom" class="main__checkbox">
+          </div>
+          <div class="main__input">
+            <label for="hasEatery">Наличие точки питания</label>
+            <input type="checkbox" name="hasEatery" id="hasEatery" class="main__checkbox">
+          </div>
+          <div class="main__input">
+            <label for="hasToilet">Наличие туалета</label>
+            <input type="checkbox" name="hasToilet" id="hasToilet" class="main__checkbox">
+          </div>
+          <div class="main__input">
+            <label for="hasWifi">Наличие точки Wi-Fi</label>
+            <input type="checkbox" name="hasWifi" id="hasWifi" class="main__checkbox">
+          </div>
+          <div class="main__input">
+            <label for="hasCashMachine">Наличие банкомата</label>
+            <input type="checkbox" name="hasCashMachine" id="hasCashMachine" class="main__checkbox">
+          </div>
+          <div class="main__input">
+            <label for="hasFirstAidPost">Наличие медпункта</label>
+            <input type="checkbox" name="hasFirstAidPost" id="hasFirstAidPost" class="main__checkbox">
+          </div>
+          <div class="main__input">
+            <label for="hasMusic">Наличие музыкального сопровождения</label>
+            <input type="checkbox" name="hasMusic" id="hasMusic" class="main__checkbox">
+          </div>
+          <div class="main__input">
+            <label for="hasEquipmentRental">Возможность проката оборудования</label>
+            <input type="checkbox" name="hasEquipmentRental" id="hasEquipmentRental" class="main__checkbox">
+          </div>
+          <div class="main__input">
+            <label for="hasTechService">Наличие сервиса технического обслуживания</label>
+            <input type="checkbox" name="hasTechService" id="hasTechService" class="main__checkbox">
+          </div>
         </div>
         <div class="main__content">
          <!-- <div class="main__item">hello</div> -->
@@ -105,11 +164,20 @@ for ($i = 1; $i < count($stringResults); $i++) {
     const mainContent = document.querySelector('.main__content');
     const data = extractData('<?php echo $str ?>');
 
+    const mainSearch = document.querySelector('.main__search');
+    const mainRatingSelect = document.querySelector('#main-rating-select');
+    const mainPaidSelect = document.querySelector('#main-paid-select');
+    const mainDisabilitySelect = document.querySelector('#main-disability-select');
+    const checkboxes = document.querySelectorAll('.main__checkbox');
+
     function render(elements) {
       mainContent.innerHTML = "";
 
-      elements.forEach(params => {
-        let item = document.createElement('div');
+      for (let i = 0; i < elements.length - 1; i++) {
+        const params = [...elements[i]];
+
+        if (!params[0].toLowerCase().includes('комплекс')) continue;
+        if (!params[0].toLowerCase().includes(mainSearch.value.toLowerCase())) continue;
 
         const gym = {
           objectName: params[0],
@@ -137,6 +205,16 @@ for ($i = 1; $i < count($stringResults); $i++) {
           rating: 0
         }
 
+        let next = false;
+
+        for (let j = 0; j < checkboxes.length; j++) {
+          if (gym[checkboxes[j].name] === "нет" && checkboxes[j].checked === true) {
+            next = true;
+          }
+        }
+
+        if (next) continue;
+
         if (gym.hasEquipmentRental === "да") gym.rating += 10;
         if (gym.hasTechService === "да") gym.rating += 5;
         if (gym.hasDressingRoom === "да") gym.rating += 20;
@@ -152,6 +230,21 @@ for ($i = 1; $i < count($stringResults); $i++) {
           } else if (gym.disabilityFriendly === "приспособлен для всех групп инвалидов") {
             gym.rating += 15;
         }
+
+        if (+mainRatingSelect.value === 1 && gym.rating >= 55) continue;
+        if (+mainRatingSelect.value === 2 && (gym.rating >= 70 || gym.rating < 55)) continue;
+        if (+mainRatingSelect.value === 3 && (gym.rating >= 85 || gym.rating < 70)) continue;
+        if (+mainRatingSelect.value === 4 && (gym.rating >= 100 || gym.rating < 85)) continue;
+        if (+mainRatingSelect.value === 5 && gym.rating < 100) continue;
+
+        if (mainPaidSelect.value === "paid" && gym.paid === "бесплатно") continue;
+        if (mainPaidSelect.value === "free" && gym.paid === "платно") continue;
+
+        if (mainDisabilitySelect.value === "partly" && gym.disabilityFriendly !== "частично приспособлен") continue;
+        if (mainDisabilitySelect.value === "oda" && gym.disabilityFriendly !== "приспособлен для лиц с нарушением ОДА") continue;
+        if (mainDisabilitySelect.value === "fully" && gym.disabilityFriendly !== "приспособлен для всех групп инвалидов") continue;
+
+        const item = document.createElement('div');
 
         item.classList.add('main__item');
         item.innerHTML = 
@@ -230,11 +323,9 @@ for ($i = 1; $i < count($stringResults); $i++) {
           </ul>
         `;
 
-        if (gym.objectName.toLowerCase().includes('комплекс')) {
-          mainContent.append(item);
-        }
-      })
-
+        mainContent.append(item);
+      }
+    
       const mainItems = document.querySelectorAll('.main__item');
 
       mainItems.forEach(item => {
@@ -250,11 +341,26 @@ for ($i = 1; $i < count($stringResults); $i++) {
   
     render(data);
 
-    const mainSearch = document.querySelector('.main__search');
-
     mainSearch.addEventListener('keyup', () => {
-      const filteredData = data.filter(gym => gym[0].toLowerCase().includes(mainSearch.value.toLowerCase()));
-      render(filteredData);
+      render(data);
+    })
+
+    mainRatingSelect.addEventListener('change', () => {
+      render(data);
+    })
+
+    mainPaidSelect.addEventListener('change', () => {
+      render(data);
+    })
+
+    mainDisabilitySelect.addEventListener('change', () => {
+      render(data);
+    })
+
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', (event) => {
+        render(data);
+      })
     })
   </script>
 </body>
